@@ -1,0 +1,34 @@
+{% extends "src/njc/layout.njc" %}
+
+{% block content %}
+<header class="header"></header>
+
+<main class="gallery">
+    <div class="container">
+        <div class="gallery__title">Gallery</div>
+
+        <div class="gallery__form-search">
+            <input class="gallery__search-field" type="text" placeholder="Enter some photos theme">
+            <button class="gallery__search-button js-get-something">Search</button>
+
+            <span class="gallery__error-block">Неверно введены данные</span>
+        </div>
+        
+        <div class="gallery__result">
+            <ul class="gallery__result-list js-gallery-result-list"></ul>
+
+            <ul class="gallery__favorite-list" ></ul>
+        </div>
+    </div>
+</main>
+
+<footer class="footer"></footer>
+
+<script type="text/html" id='js-gallery-result-item'>
+    <li class="gallery__result-list-item">
+        <img class="gallery__result-list-image" src="<%= imageLink %>" alt="Result-image">
+
+        <a href="javascript: void(0);" class="gallery__list-item-favorite js-add-to-favorite"></a>
+    </li>
+</script>
+{% endblock %}
