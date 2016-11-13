@@ -44,6 +44,7 @@ PhotoSearchService.prototype.getSearchResult = function (url) {
         self.renderSearchResult(result.response);
     });
     // @todo add loader and button change states
+    // @todo sometimes Api response is null on the same request, bug or shit.
 };
 
 PhotoSearchService.prototype.renderSearchResult = function (response) {
