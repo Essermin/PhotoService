@@ -1,5 +1,4 @@
 function PhotoSearchService () {
-    // @todo move these variables into options object
     this.$searchField = $('.gallery__search-field');
     this.$searchBlock = $('.gallery__form-search');
     this.$resultContainer = $('.gallery__result');
@@ -10,7 +9,7 @@ function PhotoSearchService () {
 }
 
 PhotoSearchService.prototype.formSearchRequest = function () {
-    this.searchString = this.$searchField.val() || false;
+    this.searchString = this.$searchField.val();
 
     if (this.searchString) {
         this.searchUrl = 'https://api.vk.com/method/' + this.apiMethod + '?q=' + this.searchString + '&count=' + this.resultItemsCount + '&v=' + this.apiVersion + '';
@@ -43,8 +42,6 @@ PhotoSearchService.prototype.getSearchResult = function (url) {
     }).done(function (result) {
         self.renderSearchResult(result.response);
     });
-    // @todo add loader and button change states
-    // @todo sometimes Api response is null on the same request, bug or shit.
 };
 
 PhotoSearchService.prototype.renderSearchResult = function (response) {
@@ -95,14 +92,9 @@ PhotoSearchService.prototype.addItemToFavorite = function (element) {
     this.$favoriteItemParent.addClass('js-added-to-favorite');
     this.$resultContainer.addClass('gallery__result-favorite');
 
-    this.$favoriteItemParent.clone().appendTo(this.$favoriteContainer).find('.js-add-to-favorite').remove();;
+    this.$favoriteItemParent.clone().appendTo(this.$favoriteContainer).find('.js-add-to-favorite').remove();
 };
 
-//@todo drag&drop mechanic, previous fiddle testing - http://jsfiddle.net/x2yyf72e/
-//@todo remove from favorite option
-//@todo add more adaptive for html layout, especially for mobile version
-//@todo add image pop-up on click, for more usability. Like colorbox or smthg
-//@todo need some adaptation for images from API, some of them look really scruffy
 
 $(document).ready(function () {
     var photoService = new PhotoSearchService();

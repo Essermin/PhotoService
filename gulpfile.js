@@ -73,7 +73,7 @@ gulp.task('build', function(callback) {
 	runSequence('clean','layout','styles','scripts','images',callback)
 });
 
-gulp.task("serve", ['layout','styles','scripts','images'], function() {
+gulp.task('serve', ['layout','styles','scripts','images'], function() {
 	server.init({
 		server: "build",
 		notify: false,
@@ -81,8 +81,8 @@ gulp.task("serve", ['layout','styles','scripts','images'], function() {
 		ui: false
 	});
 
-	gulp.watch("src/**/*.{scss,sass}", ["styles"]);
-	gulp.watch("src/**/*.+(html|njc)", ["layout"]);
-	gulp.watch("src/**/*.js", ["scripts"]);
-	gulp.watch("src/**/*.+(jpg,png,svg)", ["images"]);
+	gulp.watch('src/**/*.{scss,sass}', ['styles']);
+	gulp.watch('src/**/*.+(html|njc)', ['layout']);
+	gulp.watch('src/**/*.js', ['scripts']);
+	gulp.watch('src/**/*.+(jpg,png,svg)', ['images']);
 });

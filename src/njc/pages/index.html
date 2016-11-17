@@ -1,4 +1,4 @@
-{% extends "src/njc/layout.njc" %}
+{% extends "src/njc/layout.html" %}
 
 {% block content %}
 <header class="header"></header>
@@ -9,9 +9,9 @@
 
         <div class="gallery__form-search">
             <input class="gallery__search-field" type="text" placeholder="Enter some photos theme">
-            <button class="gallery__search-button js-get-something">Search</button>
+            <button class="gallery__search-button js-get-something" type="button">Search</button>
 
-            <span class="gallery__error-block">Неверно введены данные</span>
+            <span class="gallery__error-block">Incorrect request</span>
         </div>
         
         <div class="gallery__result">

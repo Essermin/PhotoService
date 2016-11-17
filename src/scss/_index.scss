@@ -7,6 +7,13 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	margin: 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 .header {
@@ -72,13 +79,6 @@ body {
 		display: flex;
 		justify-content: space-between;
 
-		.gallery__favorite-list {
-			flex-basis: 30%;
-			padding-left: 20px;
-			border-left: 1px dashed #c0c0c0;
-			box-sizing: border-box;
-		}
-
 		.gallery__result-list {
 			flex-basis: 70%;
 			padding-right: 20px;
@@ -87,11 +87,16 @@ body {
 	}
 }
 
+.gallery__favorite-list {
+	flex-basis: 30%;
+	padding-left: 20px;
+	border-left: 1px dashed #c0c0c0;
+	box-sizing: border-box;
+}
+
 .gallery__result-list {
 	display: flex;
 	flex-wrap: wrap;
-
-
 }
 
 .gallery__result-list-item {
@@ -110,7 +115,6 @@ body {
 	width: 30px;
 	height: 30px;
 	background: url('../img/icon-favorite.png') 50% 50%;
-	// @todo add sprite here and more effects
 	transition: all 0.5s;
 
 	&--active {
@@ -150,22 +154,13 @@ body {
 	}
 
 	.gallery__result-list-item {
-		margin: 1% 0;
+		margin: 10px 0;
 		flex-basis: 30%;
 	}
 
 	.gallery__result-favorite {
 		.gallery__result-list-item {
-			margin: 1% 0;
 			flex-basis: 46%;
 		}
 	}
-
-	.gallery__favorite-list {
-		.gallery__result-list-item {
-			margin: 5px 0;
-		}
-	}
 }
-
-//@todo fix bugs with search stretching when favorite block is too high
