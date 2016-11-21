@@ -1,8 +1,10 @@
-function PhotoSearchService () {
+function PhotoSearchService (button) {
     this.$searchField = $('.gallery__search-field');
     this.$searchBlock = $('.gallery__form-search');
     this.$resultContainer = $('.gallery__result');
     this.$favoriteContainer = $('.gallery__favorite-list');
+	this.favoriteButtonClass= '.js-add-to-favorite';
+	this.searchButtonClass= button ? button : '.js-get-something';
     this.apiMethod = 'photos.search';
     this.resultItemsCount = 6;
     this.apiVersion = '5.60';
@@ -49,8 +51,6 @@ PhotoSearchService.prototype.renderSearchResult = function (response) {
 
     this.responseItems = response.items;
 
-    console.log(this.responseItems);
-
     this.$responseHtmlContainer = $('.js-gallery-result-list');
     this.$responseHtmlItem = $('#js-gallery-result-item').html();
     this.responseHtmlItemValue = '';
@@ -95,16 +95,22 @@ PhotoSearchService.prototype.addItemToFavorite = function (element) {
     this.$favoriteItemParent.clone().appendTo(this.$favoriteContainer).find('.js-add-to-favorite').remove();
 };
 
+PhotoSearchService.prototype.bindServiceEvents = function (element) {
+	var self = this;
+
+	$(document)
+		.on('click', this.favoriteButtonClass, function () {
+			self.addItemToFavorite(this);
+		})
+		.on('click', this.searchButtonClass, function () {
+			self.initSearchResult();
+		})
+};
+
 
 $(document).ready(function () {
-    var photoService = new PhotoSearchService();
+    var photoService = new PhotoSearchService('.js-get-something');
 
-    $('.js-get-something').on('click', function () {
-        photoService.initSearchResult();
-    });
-
-    $(document).on('click', '.js-add-to-favorite', function () {
-        photoService.addItemToFavorite(this);
-    });
+	photoService.bindServiceEvents();
 });
 
