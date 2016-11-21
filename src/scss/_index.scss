@@ -119,11 +119,11 @@ ul {
 	right: 5px;
 	width: 30px;
 	height: 30px;
-	background: url('../img/icon-favorite.png') 50% 50%;
+	background: url('/build/img/icon-favorite.png') 50% 50%;
 	transition: all 0.5s;
 
 	&--active {
-		background: url('../img/icon-favorite-active.png') 50% 50%;
+		background: url('/build/img/icon-favorite-active.png') 50% 50%;
 	}
 }
 
